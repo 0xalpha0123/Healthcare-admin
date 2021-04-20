@@ -1,11 +1,11 @@
-import { useTranslation } from "next-i18next";
-import Button from "@material-ui/core/Button";
+import { useTranslation } from 'next-i18next';
+import { Button } from '@material-ui/core';
 
 function Test() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   return (
     <Button variant="contained" color="primary">
-      {t("save")}
+      {t('save')}
     </Button>
   );
 }
