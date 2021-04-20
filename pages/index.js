@@ -1,12 +1,15 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Test from "../components/Test";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Test from '../components/Test';
+import AuthHoc from '../components/auth/AuthHoc';
 
-export default function Home() {
+function Home() {
   return <Test />;
 }
 
+export default AuthHoc(Home);
+
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ["common"])),
+    ...(await serverSideTranslations(locale, ['common'])),
   },
 });
