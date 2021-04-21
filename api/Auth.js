@@ -6,8 +6,12 @@ class Auth extends Api {
   }
   async signIn({ email, password }) {
     const response = await this.api.post('/auth/sign-in', { email, password });
-    const token = response.data.token;
-    //set token
+    const token = response.data.accessToken;
+    document.cookie = `authorization=${token};`;
+  }
+
+  getIsAuth(ctx) {
+    return this.api.get('/auth', this.getAuthOptions(ctx));
   }
 }
 

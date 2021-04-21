@@ -1,15 +1,25 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Test from '../components/Test';
-import AuthHoc from '../components/auth/AuthHoc';
+import getIsAuth from '../common/getIsAuth';
 
-function Home() {
+const Home = (props) => {
   return <Test />;
-}
+};
 
-export default AuthHoc(Home);
+export default Home;
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common'])),
-  },
-});
+export const getServerSideProps = async (ctx) => {
+  const isAuth = await getIsAuth(ctx);
+  if (!isAuth)
+    return {
+      redirect: {
+        destination: '/auth',
+        permanent: false,
+      },
+    };
+  return {
+    props: {
+      ...(await serverSideTranslations(ctx.locale, ['common'])),
+    },
+  };
+};
