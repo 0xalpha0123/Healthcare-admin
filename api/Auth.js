@@ -7,7 +7,7 @@ class Auth extends Api {
   async signIn({ email, password }) {
     const response = await this.api.post('/auth/sign-in', { email, password });
     const token = response.data.accessToken;
-    document.cookie = `authorization=${token};`;
+    document.cookie = `authorization=${token};path=/`;
   }
   signUp({ email, password }) {
     return this.api.post('/auth/sign-up', { email, password });
