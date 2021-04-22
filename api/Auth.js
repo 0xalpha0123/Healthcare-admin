@@ -9,9 +9,16 @@ class Auth extends Api {
     const token = response.data.accessToken;
     document.cookie = `authorization=${token};`;
   }
+  signUp({ email, password }) {
+    return this.api.post('/auth/sign-up', { email, password });
+  }
 
   getIsAuth(ctx) {
     return this.api.get('/auth', this.getAuthOptions(ctx));
+  }
+
+  verifyEmail(verificationToken) {
+    return this.api.post('/auth/verify-email/' + verificationToken);
   }
 }
 
