@@ -1,9 +1,8 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Test from '../components/Test';
 import api from '../api';
 
-const Home = (props) => {
-  return <Test />;
+const Home = () => {
+  return 'homepage';
 };
 
 export default Home;
