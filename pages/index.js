@@ -9,16 +9,16 @@ const Home = () => {
 export default Home;
 
 export const getServerSideProps = async (ctx) => {
-  // try {
-  //   await api.auth.getIsAuth(ctx);
-  // } catch (err) {
-  //   return {
-  //     redirect: {
-  //       destination: "/auth",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  try {
+    await api.auth.getIsAuth(ctx);
+  } catch (err) {
+    return {
+      redirect: {
+        destination: '/auth',
+        permanent: false,
+      },
+    };
+  }
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale, ['menu', 'navbar'])),
