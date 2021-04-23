@@ -10,19 +10,19 @@ const Sidebar = ({ currentUrl }) => {
     <Container>
       <MenuItem
         url="/"
-        activeUrl={currentUrl}
+        currentUrl={currentUrl}
         label={t("offers")}
         image="/assets/icons/reorder_black_24dp.svg"
       />
       <MenuItem
         url="/offer/add"
-        activeUrl={currentUrl}
+        currentUrl={currentUrl}
         label={t("addOffer")}
         image="/assets/icons/add_circle_outline_black_24dp.svg"
       />
       <MenuItem
         url="/locations"
-        activeUrl={currentUrl}
+        currentUrl={currentUrl}
         label={t("locations")}
         image="/assets/icons/public_black_24dp.svg"
       />
