@@ -21,48 +21,52 @@ img {
   max-height: 100%;
 }
 
-.Header {
-  height: 100px;
+button:hover {
+  background-color: #fc165f !important;
+}
+
+.MainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Navbar {
   display: flex;
   justify-content: space-between;
 }
 
-.Header__imageContainer {
+.Navbar__imageContainer {
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
 }
 
-.Header__image {
-  height: 100%;
-}
-
-.Header__button {
+.Navbar__button {
   margin-left: 20px !important;
 }
 
 .Sidebar_wrapper {
-  display: flex;
-  /* min-height: 100vh; */
-  /* flex-grow: 1; */
-  /* background-color: rgb(238, 238, 238); */
   -webkit-box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
+.MenuItem__buttonWrapper {
+  margin: 20px 0 0 !important;
+}
+
 .MenuItem__button {
   display: flex;
-  margin: auto;
-  padding: 10pt;
+  padding: 5px;
 }
 
 .MenuItem__button_active {
-  border: rgb(165, 165, 165) !important;
-  background-color: yellow !important;
+  background-color: #fc165f25 !important;
+  border: solid 2px #fc165f1a !important;
 }
 
 .MenuItem__button:hover {
-  background-color: rgb(232, 232, 232) !important;
+  background-color: #fc165f0e !important;
   transition: 0.3s;
 }
 

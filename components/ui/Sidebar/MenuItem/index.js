@@ -1,19 +1,19 @@
 import { Box, Card, Container, Typography } from "@material-ui/core";
 
-const MenuItem = ({ item, activeUrl }) => (
-  <Box item m={3}>
-    <a href={item.url}>
+const MenuItem = ({ item, url, label, image, activeUrl }) => (
+  <Box item className="MenuItem__buttonWrapper">
+    <a href={url}>
       <Card
         className={`MenuItem__button ${
-          activeUrl === item.url ? "MenuItem__button_active" : ""
+          activeUrl === url ? "MenuItem__button_active" : ""
         }`}
       >
         <Container>
           <Box my={2}>
-            <img alt={item.label} src={item.imageUrl} />
+            <img alt={label} src={image} />
           </Box>
           <Box my={1}>
-            <Typography align="center">{item.label}</Typography>
+            <Typography align="center">{label}</Typography>
           </Box>
         </Container>
       </Card>

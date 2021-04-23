@@ -27,7 +27,7 @@ export const getServerSideProps = async (ctx) => {
   // }
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ["navbar"])),
+      ...(await serverSideTranslations(ctx.locale, ["menu", "navbar"])),
     },
   };
 };

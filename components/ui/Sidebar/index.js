@@ -1,19 +1,31 @@
+import { useTranslation } from "next-i18next";
 import { Container } from "@material-ui/core";
 
 import MenuItem from "./MenuItem";
 
-const Sidebar = ({ menuItems, currentUrl }) => {
+const Sidebar = ({ currentUrl }) => {
+  const { t } = useTranslation("menu");
+  
   return (
     <Container>
-      {menuItems.map((item) => (
-        <MenuItem item={item} activeUrl={currentUrl} />
-      ))}
-      {/* {menuItems.map((item) => (
-        <MenuItem item={item} activeUrl={currentUrl} />
-      ))}
-      {menuItems.map((item) => (
-        <MenuItem item={item} activeUrl={currentUrl} />
-      ))} */}
+      <MenuItem
+        url="/"
+        activeUrl={currentUrl}
+        label={t("offers")}
+        image="https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpg"
+      />
+      <MenuItem
+        url="/offer/add"
+        activeUrl={currentUrl}
+        label={t("addOffer")}
+        image="https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpg"
+      />
+      <MenuItem
+        url="/locations"
+        activeUrl={currentUrl}
+        label={t("locations")}
+        image="https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpg"
+      />
     </Container>
   );
 };
