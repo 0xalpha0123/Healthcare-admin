@@ -1,11 +1,11 @@
-import { Box, Card, Container, Typography } from "@material-ui/core";
+import { Box, Card, Container, Typography } from '@material-ui/core';
 
 const MenuItem = ({ currentUrl, image, label, url }) => (
   <Box className="MenuItem__buttonWrapper">
     <a href={url}>
       <Card
         className={`MenuItem__button ${
-          currentUrl === url ? "MenuItem__button_active" : ""
+          currentUrl === url ? 'MenuItem__button_active' : ''
         }`}
       >
         <Container>
