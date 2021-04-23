@@ -1,6 +1,6 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import api from '../../api';
-import SignInOrUp from '../../components/auth/SignInOrUp';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import api from "../../api";
+import SignInOrUp from "../../components/auth/SignInOrUp";
 function AuthPage() {
   return <SignInOrUp />;
 }
@@ -10,14 +10,14 @@ export const getServerSideProps = async (ctx) => {
     await api.auth.getIsAuth(ctx);
     return {
       redirect: {
-        destination: '/',
+        destination: "/",
         permanent: false,
       },
     };
   } catch (err) {
     return {
       props: {
-        ...(await serverSideTranslations(ctx.locale, ['auth'])),
+        ...(await serverSideTranslations(ctx.locale, ["auth"])),
       },
     };
   }

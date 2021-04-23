@@ -1,51 +1,52 @@
-import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Box, Grid } from "@material-ui/core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCog,
-  faBroom,
-  faMinusSquare,
-  faPlusSquare,
-  faFileImport,
-} from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
-import Header from "../../ui/Header/Header";
-import Sidebar from "../../ui/Sidebar/Sidebar";
+import Navbar from "../../ui/Navbar";
+import Sidebar from "../../ui/Sidebar";
+
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faCog,
+//   faBroom,
+//   faMinusSquare,
+//   faPlusSquare,
+//   faFileImport,
+// } from "@fortawesome/free-solid-svg-icons";
 
 const menuElements = [
   {
-    label: "Lista ogłoszeń",
+    label: "Lokalizacje",
+    url: "/locations",
+    icon: "icon",
+    imageUrl: "https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpgg",
+  },
+  {
+    label: "Ogłoszenia",
     url: "/",
-    icon: <FontAwesomeIcon icon={faBroom} />,
+    icon: "#image#",
     imageUrl: "https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpgg",
   },
-  {
-    label: "Dodaj ogłoszenie",
-    url: "/add-offer",
-    icon: <FontAwesomeIcon icon={faBroom} />,
-    imageUrl: "https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpgg",
-  },
-  {
-    label: "Konto",
-    url: "/account",
-    icon: <FontAwesomeIcon icon={faBroom} />,
-    imageUrl: "https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpgg",
-  },
+  // {
+  //   label: "Dodaj ogłoszenie",
+  //   url: "/add-offer",
+  //   icon: "#image#",
+  //   imageUrl: "https://bi.im-g.pl/im/52/b2/14/z21700946IER,Shrek.jpgg",
+  // },
 ];
 
 const MainLayout = ({ children }) => {
-  const currentUrl = "";
+  const router = useRouter();
 
   return (
     <Box>
-      <AppBar position="static">
-        <Header />
+      <AppBar position="sticky">
+        <Navbar />
       </AppBar>
-      <Grid container spacing={3}>
-        <Grid item lg={3}>
-          <Sidebar menuItems={menuElements} />
+      <Grid container>
+        <Grid item md={6} lg={3} className="Sidebar_wrapper">
+          <Sidebar currentUrl={router.pathname} menuItems={menuElements} />
         </Grid>
-        <Grid item lg={9}>
+        <Grid item md={6} lg={9}>
           <main>{children}</main>
         </Grid>
       </Grid>
