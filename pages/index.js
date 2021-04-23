@@ -1,8 +1,15 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Test from "../components/Test";
+
+import MainLayout from "../components/layout/MainLayout/MainLayout";
 
 export default function Home() {
-  return <Test />;
+  return (
+    <div>
+      <MainLayout>
+        <div>WIELKIE ELO</div>
+      </MainLayout>
+    </div>
+  );
 }
 
 export const getStaticProps = async ({ locale }) => ({
