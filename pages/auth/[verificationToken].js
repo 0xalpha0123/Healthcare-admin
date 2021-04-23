@@ -1,6 +1,6 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import VerificationMessage from '../../components/auth/VerificationMessage';
-import api from '../../api';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import VerificationMessage from "../../components/auth/VerificationMessage";
+import api from "../../api";
 function VerifyAccountPage({ isSuccess }) {
   return <VerificationMessage isSuccess={isSuccess} />;
 }
@@ -16,7 +16,7 @@ export const getServerSideProps = async (ctx) => {
   }
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ['auth'])),
+      ...(await serverSideTranslations(ctx.locale, ["auth"])),
       isSuccess,
     },
   };
