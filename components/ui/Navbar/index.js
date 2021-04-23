@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { Box, Button, Link, Toolbar } from "@material-ui/core";
 
-const Header = () => {
+const Navbar = () => {
   const router = useRouter();
   const { t } = useTranslation("navbar");
 
@@ -14,19 +14,19 @@ const Header = () => {
   };
 
   return (
-    <Toolbar className="Header">
-      <Box height={60} mx={9} className="Header__imageContainer">
+    <Toolbar className="Navbar">
+      <Box height={60} my={1} mx={2} className="Navbar__imageContainer">
         <Link href="/">
-          <img className="Header__image" src="/assets/logo.png" />
+          <img src="/assets/logo.png" />
         </Link>
       </Box>
       <Box>
-        <Button className="Header__button" color="inherit">
+        <Button className="Navbar__button" color="inherit">
           {t("myAccount")}
         </Button>
         <Button
           onClick={handleLogoutClick}
-          className="Header__button"
+          className="Navbar__button"
           color="inherit"
         >
           {t("logout")}
@@ -36,4 +36,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;
