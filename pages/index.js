@@ -1,6 +1,6 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import MainLayout from "../components/layout/MainLayout/MainLayout";
-import api from "../api";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import MainLayout from '../components/layout/MainLayout/MainLayout';
+import api from '../api';
 
 const Home = () => {
   return <MainLayout></MainLayout>;
@@ -21,7 +21,7 @@ export const getServerSideProps = async (ctx) => {
   // }
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ["menu", "navbar"])),
+      ...(await serverSideTranslations(ctx.locale, ['menu', 'navbar'])),
     },
   };
 };

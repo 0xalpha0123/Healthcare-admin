@@ -1,16 +1,16 @@
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-import { Box, Button, Link, Toolbar } from "@material-ui/core";
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { Box, Button, Link, Toolbar } from '@material-ui/core';
 
 const Navbar = () => {
   const router = useRouter();
-  const { t } = useTranslation("navbar");
+  const { t } = useTranslation('navbar');
 
   const handleLogoutClick = () => {
     document.cookie =
-      "authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      'authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
-    router.push("/auth");
+    router.push('/auth');
   };
 
   return (
@@ -22,14 +22,14 @@ const Navbar = () => {
       </Box>
       <Box>
         <Button className="Navbar__button" color="inherit">
-          {t("myAccount")}
+          {t('myAccount')}
         </Button>
         <Button
           onClick={handleLogoutClick}
           className="Navbar__button"
           color="inherit"
         >
-          {t("logout")}
+          {t('logout')}
         </Button>
       </Box>
     </Toolbar>
