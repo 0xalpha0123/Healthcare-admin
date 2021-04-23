@@ -5,7 +5,7 @@ const MenuItem = ({ currentUrl, image, label, url }) => (
     <a href={url}>
       <Card
         className={`MenuItem__button ${
-          currentUrl === url ? 'MenuItem__button_active' : ''
+          url === currentUrl ? 'MenuItem__button_active' : ''
         }`}
       >
         <Container>
