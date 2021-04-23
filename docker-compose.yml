@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   dev:
@@ -9,5 +9,6 @@ services:
     restart: always
     volumes:
       - ./:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
-      - "3000:3000"
+      - '3000:3000'
