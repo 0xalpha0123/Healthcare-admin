@@ -46,6 +46,10 @@ button:hover {
   margin-left: 20px !important;
 }
 
+.PageContent__wrapper {
+  flex-grow: 1;
+}
+
 .Sidebar_wrapper {
   -webkit-box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
@@ -61,7 +65,7 @@ button:hover {
 }
 
 .MenuItem__button_active {
-  background-color: #fc165f25 !important;
+  background-color: #fc165f17 !important;
   border: solid 2px #fc165f1a !important;
 }
 
@@ -70,6 +74,7 @@ button:hover {
   transition: 0.3s;
 }
 
-.Menu__label {
-  text-align: center;
+.MenuItem__image {
+  height: 60px;
+  margin: auto;
 }

@@ -9,8 +9,8 @@ const MenuItem = ({ item, url, label, image, activeUrl }) => (
         }`}
       >
         <Container>
-          <Box my={2}>
-            <img alt={label} src={image} />
+          <Box display="flex" justify-content="center" my={1}>
+            <img alt={label} src={image} className="MenuItem__image" />
           </Box>
           <Box my={1}>
             <Typography align="center">{label}</Typography>

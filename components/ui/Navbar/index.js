@@ -17,7 +17,7 @@ const Navbar = () => {
     <Toolbar className="Navbar">
       <Box height={60} my={1} mx={2} className="Navbar__imageContainer">
         <Link href="/">
-          <img src="/assets/logo.png" />
+          <img src="/assets/logo/logo.png" />
         </Link>
       </Box>
       <Box>
