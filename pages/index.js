@@ -1,8 +1,15 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import api from '../api';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import MainLayout from "../components/layout/MainLayout/MainLayout";
+import api from "../api";
 
 const Home = () => {
-  return 'homepage';
+  return (
+    <div>
+      <MainLayout>
+        <div>WIELKIE ELO</div>
+      </MainLayout>
+    </div>
+  );
 };
 
 export default Home;
@@ -13,14 +20,14 @@ export const getServerSideProps = async (ctx) => {
   } catch (err) {
     return {
       redirect: {
-        destination: '/auth',
+        destination: "/auth",
         permanent: false,
       },
     };
   }
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ['common'])),
+      ...(await serverSideTranslations(ctx.locale, ["common"])),
     },
   };
 };
