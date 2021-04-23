@@ -3,13 +3,7 @@ import MainLayout from "../components/layout/MainLayout/MainLayout";
 import api from "../api";
 
 const Home = () => {
-  return (
-    <div>
-      <MainLayout>
-        <div>content</div>
-      </MainLayout>
-    </div>
-  );
+  return <MainLayout></MainLayout>;
 };
 
 export default Home;

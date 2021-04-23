@@ -12,7 +12,7 @@ const MainLayout = ({ children }) => {
       <AppBar position="sticky">
         <Navbar />
       </AppBar>
-      <Grid container style={{ flexGrow: 1 }}>
+      <Grid container className="PageContent__wrapper">
         <Grid item md={4} lg={2} className="Sidebar_wrapper">
           <Sidebar currentUrl={router.pathname} />
         </Grid>
