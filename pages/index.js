@@ -3,14 +3,14 @@ import MainLayout from '../components/layout/MainLayout/MainLayout';
 import api from '../api';
 
 const Home = () => {
-  return <MainLayout></MainLayout>;
+  return 'page content';
 };
 
 export default Home;
 
 export const getServerSideProps = async (ctx) => {
   try {
-    // await api.auth.getIsAuth(ctx);
+    await api.auth.getIsAuth(ctx);
   } catch (err) {
     return {
       redirect: {
