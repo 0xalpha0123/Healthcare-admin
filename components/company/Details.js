@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { Card, CardContent, Link, Container, Typography, Box } from '@material-ui/core';
 
-function CompanyData({ company }) {
+function Details({ company }) {
   const { t } = useTranslation('company');
   return (
     <Container>
@@ -27,4 +27,4 @@ function CompanyData({ company }) {
   );
 }
 
-export default CompanyData;
+export default Details;
