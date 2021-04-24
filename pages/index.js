@@ -1,8 +1,9 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import MainLayout from '../components/layout/MainLayout/MainLayout';
 import api from '../api';
 
 const Home = () => {
-  return 'homepage';
+  return 'page content';
 };
 
 export default Home;
@@ -20,7 +21,7 @@ export const getServerSideProps = async (ctx) => {
   }
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ['common'])),
+      ...(await serverSideTranslations(ctx.locale, ['navigation'])),
     },
   };
 };
