@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   min-height: 100vh;
 }
 
@@ -19,67 +19,4 @@ a {
 img {
   max-width: 100%;
   max-height: 100%;
-}
-
-.MainLayout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.Navbar {
-  display: flex;
-  justify-content: space-between;
-  background-color: #fff;
-}
-
-.Navbar__image {
-  padding: 5px;
-}
-
-.Navbar__button {
-  margin-left: 20px !important;
-}
-
-.Navbar__button {
-  background-color: #1f65b3 !important;
-}
-
-.Navbar__button:hover {
-  background-color: #fc165f !important;
-}
-
-.PageContent__wrapper {
-  flex-grow: 1;
-}
-
-.Sidebar_wrapper {
-  -webkit-box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
-  background-color: #1f65b3;
-}
-
-.MenuItem__buttonWrapper {
-  margin: 20px 0 0 !important;
-}
-
-.MenuItem__button {
-  display: flex;
-  padding: 5px;
-}
-
-.MenuItem__button_active {
-  background-color: #fc165f !important;
-  color: white !important;
-}
-
-.MenuItem__button:hover {
-  background-color: #fc165f !important;
-  color: white;
-  transition: 0.3s;
-}
-
-.MenuItem__icon {
-  font-size: 40px !important;
-  margin: auto;
 }

@@ -1,34 +1,31 @@
 import { useTranslation } from 'next-i18next';
 import { Container } from '@material-ui/core';
-import ListIcon from '@material-ui/icons/List';
-import ControlPointIcon from '@material-ui/icons/ControlPoint';
-import PublicIcon from '@material-ui/icons/Public';
+import { ControlPoint, List, Public } from '@material-ui/icons';
 
-import MenuItem from './MenuItem';
+import SidebarItem from './SidebarItem';
 
 const Sidebar = ({ currentUrl }) => {
   const { t } = useTranslation('navigation');
 
   return (
     <Container>
-      <MenuItem
+      <SidebarItem
         url="/"
         currentUrl={currentUrl}
         label={t('offers')}
-        image="/assets/icons/reorder_black_24dp.svg"
-        icon={<ListIcon className="MenuItem__icon" />}
+        icon={<List fontSize="large" />}
       />
-      <MenuItem
+      <SidebarItem
         url="/offer/add"
         currentUrl={currentUrl}
         label={t('addOffer')}
-        icon={<ControlPointIcon className="MenuItem__icon" />}
+        icon={<ControlPoint fontSize="large" />}
       />
-      <MenuItem
+      <SidebarItem
         url="/locations"
         currentUrl={currentUrl}
         label={t('locations')}
-        icon={<PublicIcon className="MenuItem__icon" />}
+        icon={<Public fontSize="large" />}
       />
     </Container>
   );
