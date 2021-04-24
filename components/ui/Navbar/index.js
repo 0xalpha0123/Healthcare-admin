@@ -15,9 +15,9 @@ const Navbar = () => {
 
   return (
     <Toolbar className="Navbar">
-      <Box height={60} my={1} mx={2} className="Navbar__imageContainer">
+      <Box height={60} my={1} mx={1} className="Navbar__imageContainer">
         <Link href="/">
-          <img src="/assets/logo/logo.png" />
+          <img className="Navbar__image" src="/assets/logo/logo.png" />
         </Link>
       </Box>
       <Box>
