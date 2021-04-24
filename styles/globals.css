@@ -21,6 +21,10 @@ img {
   max-height: 100%;
 }
 
+button {
+  background-color: #1f65b3 !important;
+}
+
 button:hover {
   background-color: #fc165f !important;
 }
@@ -34,12 +38,11 @@ button:hover {
 .Navbar {
   display: flex;
   justify-content: space-between;
+  background-color: #fff;
 }
 
-.Navbar__imageContainer {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 10px;
+.Navbar__image {
+  padding: 5px;
 }
 
 .Navbar__button {
@@ -53,6 +56,7 @@ button:hover {
 .Sidebar_wrapper {
   -webkit-box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1);
+  background-color: #1f65b3;
 }
 
 .MenuItem__buttonWrapper {
@@ -65,12 +69,12 @@ button:hover {
 }
 
 .MenuItem__button_active {
-  background-color: #fc165f17 !important;
-  border: solid 2px #fc165f1a !important;
+  background-color: #fc165f !important;
+  color: white !important;
 }
 
 .MenuItem__button:hover {
-  background-color: #fc165f0e !important;
+  background-color: #fc165f !important;
   transition: 0.3s;
 }
 
