@@ -1,5 +1,8 @@
 import { useTranslation } from 'next-i18next';
 import { Container } from '@material-ui/core';
+import ListIcon from '@material-ui/icons/List';
+import ControlPointIcon from '@material-ui/icons/ControlPoint';
+import PublicIcon from '@material-ui/icons/Public';
 
 import MenuItem from './MenuItem';
 
@@ -13,18 +16,19 @@ const Sidebar = ({ currentUrl }) => {
         currentUrl={currentUrl}
         label={t('offers')}
         image="/assets/icons/reorder_black_24dp.svg"
+        icon={<ListIcon className="MenuItem__icon" />}
       />
       <MenuItem
         url="/offer/add"
         currentUrl={currentUrl}
         label={t('addOffer')}
-        image="/assets/icons/add_circle_outline_black_24dp.svg"
+        icon={<ControlPointIcon className="MenuItem__icon" />}
       />
       <MenuItem
         url="/locations"
         currentUrl={currentUrl}
         label={t('locations')}
-        image="/assets/icons/public_black_24dp.svg"
+        icon={<PublicIcon className="MenuItem__icon" />}
       />
     </Container>
   );
