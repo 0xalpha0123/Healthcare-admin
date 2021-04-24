@@ -1,8 +1,12 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import api from '../../api';
-import CompanyData from '../../components/company/CompanyData';
+import Details from '../../components/company/Details';
+import NoCompany from '../../components/company/NoCompany';
 function CompanyPage({ company }) {
-  return <CompanyData company={company} />;
+  if (!company) {
+    return <NoCompany />;
+  }
+  return <Details company={company} />;
 }
 
 export const getServerSideProps = async (ctx) => {
@@ -11,7 +15,7 @@ export const getServerSideProps = async (ctx) => {
     const company = await api.company.getCompanyData(ctx);
     return {
       props: {
-        ...(await serverSideTranslations(ctx.locale, ['company'])),
+        ...(await serverSideTranslations(ctx.locale, ['company', 'navigation'])),
         company,
       },
     };
