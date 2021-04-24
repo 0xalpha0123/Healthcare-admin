@@ -21,14 +21,6 @@ img {
   max-height: 100%;
 }
 
-button {
-  background-color: #1f65b3 !important;
-}
-
-button:hover {
-  background-color: #fc165f !important;
-}
-
 .MainLayout {
   min-height: 100vh;
   display: flex;
@@ -47,6 +39,14 @@ button:hover {
 
 .Navbar__button {
   margin-left: 20px !important;
+}
+
+.Navbar__button {
+  background-color: #1f65b3 !important;
+}
+
+.Navbar__button:hover {
+  background-color: #fc165f !important;
 }
 
 .PageContent__wrapper {
@@ -75,10 +75,11 @@ button:hover {
 
 .MenuItem__button:hover {
   background-color: #fc165f !important;
+  color: white;
   transition: 0.3s;
 }
 
-.MenuItem__image {
-  height: 60px;
+.MenuItem__icon {
+  font-size: 40px !important;
   margin: auto;
 }

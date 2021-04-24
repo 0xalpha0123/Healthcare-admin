@@ -10,7 +10,7 @@ export default Home;
 
 export const getServerSideProps = async (ctx) => {
   try {
-    await api.auth.getIsAuth(ctx);
+    // await api.auth.getIsAuth(ctx);
   } catch (err) {
     return {
       redirect: {

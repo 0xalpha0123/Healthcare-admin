@@ -1,6 +1,6 @@
 import { Box, Card, Container, Typography } from '@material-ui/core';
 
-const MenuItem = ({ currentUrl, image, label, url }) => (
+const MenuItem = ({ currentUrl, icon, label, url }) => (
   <Box className="MenuItem__buttonWrapper">
     <a href={url}>
       <Card
@@ -10,7 +10,7 @@ const MenuItem = ({ currentUrl, image, label, url }) => (
       >
         <Container>
           <Box my={1} display="flex" justify-content="center">
-            <img alt={label} src={image} className="MenuItem__image" />
+            {icon}
           </Box>
           <Box my={1}>
             <Typography align="center">{label}</Typography>
