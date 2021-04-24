@@ -58,7 +58,7 @@ function SignInOrUp() {
         <Card>
           <CardContent>
             <Box height={300}>
-              <img src="/logo.svg" />
+              <img src="/assets/logo.svg" />
             </Box>
             <Typography variant="h4">
               <Box textAlign="center">{isSignIn ? t('signingIn') : t('signingUp')}</Box>
