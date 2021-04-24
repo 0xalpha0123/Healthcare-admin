@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core';
 import MenuItem from './MenuItem';
 
 const Sidebar = ({ currentUrl }) => {
-  const { t } = useTranslation('menu');
+  const { t } = useTranslation('navigation');
 
   return (
     <Container>
