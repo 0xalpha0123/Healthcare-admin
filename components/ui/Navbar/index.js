@@ -4,7 +4,7 @@ import { Box, Button, Link, Toolbar } from '@material-ui/core';
 
 const Navbar = () => {
   const router = useRouter();
-  const { t } = useTranslation('navbar');
+  const { t } = useTranslation('navigation');
 
   const handleLogoutClick = () => {
     document.cookie =
