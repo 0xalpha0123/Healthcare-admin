@@ -45,6 +45,15 @@ class Company extends Api {
   deletePhoto(id) {
     return this.api.delete('/companies/photo/' + id, this.getAuthOptions());
   }
+
+  async addLocation(location) {
+    const { data } = await this.api.post('/companies/location', location, this.getAuthOptions());
+    return data;
+  }
+
+  deleteLocation(id) {
+    return this.api.delete('/companies/' + id, this.getAuthOptions);
+  }
 }
 
 export default Company;
