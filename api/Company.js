@@ -27,6 +27,24 @@ class Company extends Api {
   editCompany(data) {
     return this.api.put('/companies', data, this.getAuthOptions());
   }
+
+  async addPhoto(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    const { headers } = this.getAuthOptions();
+    const config = {
+      headers: {
+        ...headers,
+        'content-type': 'multipart/form-data',
+      },
+    };
+    const { data } = await this.api.post('/companies/photo', formData, config);
+    return data;
+  }
+
+  deletePhoto(id) {
+    return this.api.delete('/companies/photo/' + id, this.getAuthOptions());
+  }
 }
 
 export default Company;
