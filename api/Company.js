@@ -52,7 +52,7 @@ class Company extends Api {
   }
 
   deleteLocation(id) {
-    return this.api.delete('/companies/' + id, this.getAuthOptions);
+    return this.api.delete('/companies/location/' + id, this.getAuthOptions());
   }
 }
 

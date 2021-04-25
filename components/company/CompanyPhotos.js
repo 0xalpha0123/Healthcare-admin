@@ -2,8 +2,11 @@ import { Box, Card, Typography, Divider, Button } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Delete, Add } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import api from '../../api';
 function CompanyPhotos({ photos: initPhotos, mode }) {
+  const { t } = useTranslation('company');
+
   const [serverError, setServerError] = useState('');
   const [photos, setPhotos] = useState([]);
   useEffect(() => setPhotos([...initPhotos]), [initPhotos]);
@@ -59,7 +62,7 @@ function CompanyPhotos({ photos: initPhotos, mode }) {
   };
   return (
     <Box pt={4}>
-      <Typography>Galeria</Typography>
+      <Typography>{t('gallery')}</Typography>
       <Box py={1}>
         <Divider />
       </Box>

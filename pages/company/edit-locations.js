@@ -13,7 +13,6 @@ export const getServerSideProps = async (ctx) => {
   try {
     await api.auth.getIsAuth(ctx);
     const company = await api.company.getCompanyData(ctx);
-    console.log(company);
     return {
       props: {
         ...(await serverSideTranslations(ctx.locale, ['company', 'navigation'])),
