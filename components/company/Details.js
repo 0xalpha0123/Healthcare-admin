@@ -1,5 +1,16 @@
 import { useTranslation } from 'next-i18next';
-import { Card, CardContent, Link, Container, Typography, Box } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  Link,
+  Container,
+  Typography,
+  Box,
+  Grid,
+  Divider,
+  Button,
+} from '@material-ui/core';
+import { Business, Launch } from '@material-ui/icons';
 
 function Details({ company }) {
   const { t } = useTranslation('company');
@@ -8,18 +19,54 @@ function Details({ company }) {
       <Box>
         <Card>
           <CardContent>
-            <Box height={company.logo_file_path ? 300 : 0}>
-              <img src={company.logo_file_path ? company.logo_file_path : ''} />
+            <Box px={4}>
+              <Grid container spacing={3}>
+                <Grid item xs={4}>
+                  <Box p={2}>
+                    <img src={company.logo_file_path} />
+                  </Box>
+                </Grid>
+                <Grid item xs={5}>
+                  <Box p={2}>
+                    <Typography variant="h5" component="h2">
+                      <Business /> {company.name}
+                    </Typography>
+                    <Box py={2}>
+                      <a href={company.website_url} target="_blank">
+                        <Launch></Launch> {company.website_url}
+                      </a>
+                    </Box>
+                  </Box>
+                </Grid>
+                <Grid item xs={3}>
+                  <Box my={1} textAlign="right">
+                    <Button variant="contained" color="primary" fullWidth>
+                      {t('editCompanyData')}
+                    </Button>
+                  </Box>
+                  <Box my={1} textAlign="right">
+                    <Button variant="contained" color="primary" fullWidth>
+                      {t('editLocations')}
+                    </Button>
+                  </Box>
+                  <Box my={1} textAlign="right">
+                    <Button variant="contained" color="primary" fullWidth>
+                      {t('editPhotos')}
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+              <Box mb={2}>
+                <Box pb={2}>{t('presentation')}</Box>
+
+                <Divider />
+                <Box
+                  pt={2}
+                  textAlign="left"
+                  dangerouslySetInnerHTML={{ __html: company.description }}
+                ></Box>
+              </Box>
             </Box>
-            <Typography variant="h5" component="h2">
-              {t('company_name')}: {company.name}
-            </Typography>
-            <Typography>
-              {t('description')}: {company.description}
-            </Typography>
-            <Typography>
-              {t('website')}: <Link>{company.website_url}</Link>
-            </Typography>
           </CardContent>
         </Card>
       </Box>
