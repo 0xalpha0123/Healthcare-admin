@@ -47,7 +47,15 @@ function CompanyForm({ mode }) {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <TextField {...field} label={t('description')} fullWidth type="textarea" />
+            <TextField
+              {...field}
+              label={t('description')}
+              fullWidth
+              multiline
+              rows={4}
+              type="textarea"
+              variant="outlined"
+            />
           )}
         />
       </Box>
