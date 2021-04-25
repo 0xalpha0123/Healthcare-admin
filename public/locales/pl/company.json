@@ -13,5 +13,6 @@
   "locationName": "Nazwa lokalizacji",
   "address": "Adres",
   "addLocation": "Dodaj nową lokalizację",
-  "add":"Dodaj"
+  "add":"Dodaj",
+  "locations": "Lokalizacje"
 }

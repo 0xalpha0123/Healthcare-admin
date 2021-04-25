@@ -32,11 +32,9 @@ function CompanyLocationForm({ onAdd }) {
         street: location.route,
         building_number: location.street_number,
       };
-      console.log(newLocation);
       const createdLocation = await api.company.addLocation(newLocation);
       onAdd(createdLocation);
     } catch (err) {
-      console.log(err);
       const resMsg = err?.response?.data?.message || err.message;
       const message = Array.isArray(resMsg)
         ? resMsg.map((el, key) => <div key={key}>{el}</div>)

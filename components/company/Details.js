@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { Card, CardContent, Container, Typography, Box, Grid, Divider } from '@material-ui/core';
 import { Business, Launch } from '@material-ui/icons';
 import CompanyPhotos from './CompanyPhotos';
+import CompanyLocations from './CompanyLocations';
 
 function Details({ company }) {
   const { t } = useTranslation('company');
@@ -40,6 +41,7 @@ function Details({ company }) {
                   dangerouslySetInnerHTML={{ __html: company.description }}
                 ></Box>
                 <CompanyPhotos photos={company.photos} />
+                <CompanyLocations locations={company.locations} />
               </Box>
             </Box>
           </CardContent>
