@@ -9,5 +9,9 @@
   "editPhotos": "Edytuj zdjęcia",
   "uploadLogo": "Dodaj logo",
   "addPhoto": "Dodaj zdjęcie",
-  "gallery": "Galeria"
+  "gallery": "Galeria",
+  "locationName": "Nazwa lokalizacji",
+  "address": "Adres",
+  "addLocation": "Dodaj nową lokalizację",
+  "add":"Dodaj"
 }
