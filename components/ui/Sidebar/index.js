@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { Container } from '@material-ui/core';
-import { Business } from '@material-ui/icons';
+import { Business, PhotoLibrary, LocationOn, Edit } from '@material-ui/icons';
 
 import SidebarItem from './SidebarItem';
 
@@ -14,6 +14,24 @@ const Sidebar = ({ currentUrl }) => {
         currentUrl={currentUrl}
         label={t('company')}
         icon={<Business fontSize="large" />}
+      />
+      <SidebarItem
+        url="/company/edit"
+        currentUrl={currentUrl}
+        label={t('companyEdit')}
+        icon={<Edit fontSize="large" />}
+      />
+      <SidebarItem
+        url="/company/edit-photos"
+        currentUrl={currentUrl}
+        label={t('companyEditPhotos')}
+        icon={<PhotoLibrary fontSize="large" />}
+      />
+      <SidebarItem
+        url="/company/edit-locations"
+        currentUrl={currentUrl}
+        label={t('companyEditLocations')}
+        icon={<LocationOn fontSize="large" />}
       />
     </Container>
   );

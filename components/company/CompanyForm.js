@@ -14,8 +14,6 @@ function CompanyForm({ mode, editedCompanyData }) {
   const [file, setFile] = useState(null);
 
   const onSubmit = async (data) => {
-    console.log(data);
-
     try {
       const logo_file_path = file
         ? await api.company.uploadLogo(file)
@@ -56,10 +54,10 @@ function CompanyForm({ mode, editedCompanyData }) {
           render={({ field }) => (
             <TextField
               {...field}
-              label={t('description')}
+              label={t('presentation')}
               fullWidth
               multiline
-              rows={4}
+              rows={12}
               type="textarea"
               variant="outlined"
             />
