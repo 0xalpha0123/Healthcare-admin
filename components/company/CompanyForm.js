@@ -6,19 +6,26 @@ import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
 
-function CompanyForm({ mode }) {
+function CompanyForm({ mode, editedCompanyData }) {
   const { t } = useTranslation('company');
-  const { control, handleSubmit } = useForm();
+  const defaultValues = mode === 'edit' && editedCompanyData ? editedCompanyData : {};
+  const { control, handleSubmit } = useForm({ defaultValues });
   const [serverError, setServerError] = useState('');
   const [file, setFile] = useState(null);
+
   const onSubmit = async (data) => {
     console.log(data);
 
     try {
-      const logo_file_path = await api.company.uploadLogo(file);
-      console.log(logo_file_path);
-      await api.company.postCompany({ ...data, logo_file_path });
-      router.reload();
+      const logo_file_path = file
+        ? await api.company.uploadLogo(file)
+        : editedCompanyData?.logo_file_path;
+      if (mode === 'new') {
+        await api.company.postCompany({ ...data, logo_file_path });
+      } else {
+        await api.company.editCompany({ ...data, logo_file_path });
+      }
+      router.push('/company');
     } catch (err) {
       const resMsg = err?.response?.data?.message || 'Unexpected error';
       const message = Array.isArray(resMsg)

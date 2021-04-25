@@ -23,6 +23,10 @@ class Company extends Api {
     const { data } = await this.api.post('/companies/upload-logo', formData, config);
     return data.file_path;
   }
+
+  editCompany(data) {
+    return this.api.put('/companies', data, this.getAuthOptions());
+  }
 }
 
 export default Company;

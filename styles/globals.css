@@ -24,3 +24,6 @@ img {
 .MuiSvgIcon-root {
   vertical-align: middle;
 }
+.MuiButton-containedPrimary {
+  background-color: '#3769B0' !important;
+}

@@ -11,6 +11,7 @@ import {
   Button,
 } from '@material-ui/core';
 import { Business, Launch } from '@material-ui/icons';
+import CompanyActions from './CompanyActions';
 
 function Details({ company }) {
   const { t } = useTranslation('company');
@@ -39,21 +40,7 @@ function Details({ company }) {
                   </Box>
                 </Grid>
                 <Grid item xs={3}>
-                  <Box my={1} textAlign="right">
-                    <Button variant="contained" color="primary" fullWidth>
-                      {t('editCompanyData')}
-                    </Button>
-                  </Box>
-                  <Box my={1} textAlign="right">
-                    <Button variant="contained" color="primary" fullWidth>
-                      {t('editLocations')}
-                    </Button>
-                  </Box>
-                  <Box my={1} textAlign="right">
-                    <Button variant="contained" color="primary" fullWidth>
-                      {t('editPhotos')}
-                    </Button>
-                  </Box>
+                  <CompanyActions />
                 </Grid>
               </Grid>
               <Box mb={2}>
