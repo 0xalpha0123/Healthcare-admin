@@ -1,7 +1,9 @@
 {
-  "addOffer": "Dodaj ogłoszenie",
-  "locations": "Lokalizacje",
   "logout": "Wyloguj się",
   "myAccount": "Moje konto",
-  "offers": "Moje ogłoszenia"
+  "company": "Moja firma",
+  "companyEdit": "Zarządzaj danymi firmy",
+  "companyEditPhotos": "Zarządzaj galerią",
+  "companyEditLocations": "Zarządzaj lokalizacjami",
+  "offers": "Moje oferty"
 }

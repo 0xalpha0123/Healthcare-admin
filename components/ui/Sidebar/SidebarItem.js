@@ -27,11 +27,13 @@ function SidebarItem({ currentUrl, icon, label, url }) {
     <Box my={3}>
       <Link href={url}>
         <Card className={sidebarClass}>
-          <Box my={1} display="flex" justify-content="center" className={classes.icon}>
+          <Box display="flex" justify-content="center" className={classes.icon}>
             {icon}
           </Box>
           <Box my={1}>
-            <Typography align="center">{label}</Typography>
+            <Typography align="center" variant="body2">
+              {label}
+            </Typography>
           </Box>
         </Card>
       </Link>
