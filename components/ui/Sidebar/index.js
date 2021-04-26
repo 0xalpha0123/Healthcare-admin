@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { Container } from '@material-ui/core';
-import { ControlPoint, List, Public } from '@material-ui/icons';
+import { Business, PhotoLibrary, LocationOn, Edit } from '@material-ui/icons';
 
 import SidebarItem from './SidebarItem';
 
@@ -10,22 +10,28 @@ const Sidebar = ({ currentUrl }) => {
   return (
     <Container>
       <SidebarItem
-        url="/"
+        url="/company"
         currentUrl={currentUrl}
-        label={t('offers')}
-        icon={<List fontSize="large" />}
+        label={t('company')}
+        icon={<Business fontSize="large" />}
       />
       <SidebarItem
-        url="/offer/add"
+        url="/company/edit"
         currentUrl={currentUrl}
-        label={t('addOffer')}
-        icon={<ControlPoint fontSize="large" />}
+        label={t('companyEdit')}
+        icon={<Edit fontSize="large" />}
       />
       <SidebarItem
-        url="/locations"
+        url="/company/edit-photos"
         currentUrl={currentUrl}
-        label={t('locations')}
-        icon={<Public fontSize="large" />}
+        label={t('companyEditPhotos')}
+        icon={<PhotoLibrary fontSize="large" />}
+      />
+      <SidebarItem
+        url="/company/edit-locations"
+        currentUrl={currentUrl}
+        label={t('companyEditLocations')}
+        icon={<LocationOn fontSize="large" />}
       />
     </Container>
   );
