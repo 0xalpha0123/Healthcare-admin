@@ -27,6 +27,17 @@ class Offers extends Api {
     const { data } = await this.api.post('/offers', offer, this.getAuthOptions());
     return data;
   }
+
+  async putOffer(id, offer) {
+    const { data } = await this.api.put('/offers/' + id, offer, this.getAuthOptions());
+    return data;
+  }
+
+  async getOffer(ctx) {
+    const id = ctx.params.id;
+    const { data } = await this.api.get('/offers/' + id, this.getAuthOptions(ctx));
+    return data;
+  }
 }
 
 export default Offers;
