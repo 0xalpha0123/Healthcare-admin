@@ -17,8 +17,10 @@ class Company extends Api {
     formData.append('file', file);
     const { headers } = this.getAuthOptions();
     const config = {
-      ...headers,
-      'content-type': 'multipart/form-data',
+      headers: {
+        ...headers,
+        'content-type': 'multipart/form-data',
+      },
     };
     const { data } = await this.api.post('/companies/upload-logo', formData, config);
     return data.file_path;

@@ -1,0 +1,12 @@
+{
+  "title": "Tytuł oferty",
+  "add": "dodaj",
+  "description": "Treść oferty",
+  "salaryFrom": "Wynagrodzenie od",
+  "salaryTo": "Wynagrodzenie do",
+  "profession": "Zawód",
+  "specialization": "Specjalizacja",
+  "active": "Aktywna",
+  "availableLocations": "Możliwe lokalizacje",
+  "availableAgreements": "Możliwe formy współpracy"
+}
