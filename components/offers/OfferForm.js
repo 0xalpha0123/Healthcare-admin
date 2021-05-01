@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { useForm, Controller } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TextField,
   Card,
@@ -9,39 +9,53 @@ import {
   CardContent,
   Grid,
   MenuItem,
-  Select,
+  FormControlLabel,
+  Checkbox,
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
 
 function OfferForm({ mode = 'add', editedOfferData, professions, locations, agreements }) {
+  const defaultValues = (() => {
+    if (mode !== 'edit') return {};
+    return {
+      ...editedOfferData,
+      profession_id: String(editedOfferData.profession_id),
+      specialization_id: String(editedOfferData.specialization_id),
+    };
+  })();
+
   const { t } = useTranslation('offers');
-  const defaultValues = mode === 'edit' && editedOfferData ? editedOfferData : {};
   const { control, handleSubmit } = useForm({ defaultValues });
   const [serverError, setServerError] = useState('');
   const [specializations, setSpecializations] = useState([]);
 
-  const getSpecializations = async (event, onChange) => {
-    const fetchedSpecializations = await api.offers.getSpecializations(event.target.value);
+  console.log(defaultValues);
+
+  const getSpecializations = async (event, onChange, id) => {
+    const value = event ? event.target.value : id;
+    const fetchedSpecializations = await api.offers.getSpecializations(value);
     setSpecializations([...fetchedSpecializations]);
-    onChange(event);
+    if (onChange) {
+      onChange(event);
+    }
   };
 
   const onSubmit = async (data) => {
     let offer = {
       ...data,
-      company_location_ids: data.company_location_ids.map((el) => el.id),
-      agreement_type_ids: data.agreement_type_ids.map((el) => el.id),
+      company_location_ids: data.locations.map((el) => el.id),
+      agreement_type_ids: data.agreement_types.map((el) => el.id),
     };
 
     try {
       if (mode === 'add') {
         await api.offers.postOffer(offer);
       } else {
-        //
+        await api.offers.putOffer(editedOfferData.id, offer);
       }
-      // router.push('/offers');
+      router.push('/offers');
     } catch (err) {
       const resMsg = err?.response?.data?.message || err.message;
       const message = Array.isArray(resMsg)
@@ -50,6 +64,12 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
       setServerError(message);
     }
   };
+
+  useEffect(async () => {
+    if (editedOfferData?.profession_id) {
+      getSpecializations(null, null, editedOfferData.profession_id);
+    }
+  }, []);
 
   return (
     <Card>
@@ -150,7 +170,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
             <Grid container spacing={6}>
               <Grid item xs={6}>
                 <Controller
-                  name="company_location_ids"
+                  name="locations"
                   control={control}
                   defaultValue={[]}
                   render={({ field }) => (
@@ -176,7 +196,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
               </Grid>
               <Grid item xs={6}>
                 <Controller
-                  name="agreement_type_ids"
+                  name="agreement_types"
                   control={control}
                   defaultValue={[]}
                   render={({ field }) => (
@@ -201,6 +221,16 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
                 />
               </Grid>
             </Grid>
+            <Box py={2}>
+              <Controller
+                name="active"
+                control={control}
+                defaultValue={false}
+                render={({ field }) => (
+                  <FormControlLabel control={<Checkbox {...field} />} label={t('active')} />
+                )}
+              />
+            </Box>
           </Box>
 
           {serverError && <Alert severity="error">{serverError}</Alert>}
