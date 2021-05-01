@@ -31,8 +31,6 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
   const [serverError, setServerError] = useState('');
   const [specializations, setSpecializations] = useState([]);
 
-  console.log(defaultValues);
-
   const getSpecializations = async (event, onChange, id) => {
     const value = event ? event.target.value : id;
     const fetchedSpecializations = await api.offers.getSpecializations(value);

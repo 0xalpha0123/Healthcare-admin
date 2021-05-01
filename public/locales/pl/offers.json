@@ -8,5 +8,15 @@
   "specialization": "Specjalizacja",
   "active": "Aktywna",
   "availableLocations": "Możliwe lokalizacje",
-  "availableAgreements": "Możliwe formy współpracy"
+  "availableAgreements": "Możliwe formy współpracy",
+  "no.": "lp.",
+  "notPaid": "Nieopłacona",
+  "salary": "Wynagrodzenie",
+  "no": "nie",
+  "yes": "tak",
+  "currency": "PLN",
+  "updated_at": "Ostatnia aktualizacja",
+  "actions": "Dostępne akcje",
+  "edit": "Edytuj",
+  "pay": "Opłać"
 }
