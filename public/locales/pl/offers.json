@@ -18,5 +18,8 @@
   "updated_at": "Ostatnia aktualizacja",
   "actions": "Dostępne akcje",
   "edit": "Edytuj",
-  "pay": "Opłać"
+  "pay": "Opłać",
+  "paid_till": "Opłacono do",
+  "save": "Zapisz",
+  "candidates": "Kandydaci"
 }

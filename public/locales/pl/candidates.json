@@ -1,0 +1,12 @@
+{
+  "offer": "Oferta",
+  "no": "lp.",
+  "fullName": "Imię i nazwisko",
+  "message": "Wiadomość",
+  "cv": "CV",
+  "created_at": "Data aplikacji",
+  "downloadCv": "Zobacz CV",
+  "all": "Wszystkie",
+  "noCandidates": "Brak kandydatów",
+  "currency": "PLN"
+}
