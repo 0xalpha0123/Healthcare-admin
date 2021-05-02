@@ -35,7 +35,7 @@ function PaymentsList({ payments }) {
         </TableHead>
         <TableBody>
           {payments.map((payment, key) => (
-            <TableRow key={payment.id}>
+            <TableRow key={payment.title}>
               <TableCell component="th" scope="row">
                 {key + 1}
               </TableCell>

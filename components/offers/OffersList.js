@@ -65,10 +65,13 @@ function OffersList({ offers }) {
                       </Button>
                     </Link>
                   </Box>
-
-                  <Button variant="contained" color="primary">
-                    {t('pay')}
-                  </Button>
+                  <Box>
+                    <Link href={`/payments/new?offer_id=${offer.id}`}>
+                      <Button variant="contained" color="primary">
+                        {t('pay')}
+                      </Button>
+                    </Link>
+                  </Box>
                 </Grid>
               </TableCell>
             </TableRow>
