@@ -58,6 +58,13 @@ function OffersList({ offers }) {
                       </Button>
                     </Link>
                   </Box>
+                  <Box mr={1}>
+                    <Link href={'/candidates?offer_id=' + offer.id}>
+                      <Button variant="contained" color="primary">
+                        {t('candidates')}
+                      </Button>
+                    </Link>
+                  </Box>
 
                   <Button variant="contained" color="primary">
                     {t('pay')}
