@@ -11,5 +11,9 @@
   "SUCCESS": "Zakończona",
   "CANCELED": "Odrzucona",
   "IN_PROGRESS": "W trakcie",
-  "noPayments": "Brak zarejestrowanych płatności"
+  "noPayments": "Brak zarejestrowanych płatności",
+  "newPayment": "Nowa płatność",
+  "chooseBank": "Wybierz bank",
+  "chooseOption": "Wybierz opcje",
+  "pay": "Zapłać"
 }
