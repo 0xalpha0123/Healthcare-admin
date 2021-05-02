@@ -1,0 +1,15 @@
+{
+  "no.": "lp.",
+  "title": "Tytuł płatności",
+  "offerTitle": "Za ogłoszenie",
+  "amount": "Kwota",
+  "status": "Status",
+  "extension_days": "Przedłużono o",
+  "days": "dni",
+  "created_at": "Data utworzenia",
+  "currency": "PLN",
+  "SUCCESS": "Zakończona",
+  "CANCELED": "Odrzucona",
+  "IN_PROGRESS": "W trakcie",
+  "noPayments": "Brak zarejestrowanych płatności"
+}
