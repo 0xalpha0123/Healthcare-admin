@@ -234,7 +234,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
           {serverError && <Alert severity="error">{serverError}</Alert>}
           <Box textAlign="center" mt={4}>
             <Button variant="contained" type="submit" color="primary">
-              {t('add')}
+              {t('save')}
             </Button>
           </Box>
         </form>
