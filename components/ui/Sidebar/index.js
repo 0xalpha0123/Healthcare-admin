@@ -7,6 +7,7 @@ import {
   Edit,
   PostAdd,
   List,
+  Payment,
   People,
 } from '@material-ui/icons';
 
@@ -58,6 +59,12 @@ const Sidebar = ({ currentUrl }) => {
         currentUrl={currentUrl}
         label={t('candidates')}
         icon={<People fontSize="large" />}
+      />
+      <SidebarItem
+        url="/payments"
+        currentUrl={currentUrl}
+        label={t('payments')}
+        icon={<Payment fontSize="large" />}
       />
     </Container>
   );
