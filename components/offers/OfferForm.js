@@ -15,6 +15,10 @@ import {
 import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, ContentState, convertFromHTML } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function OfferForm({ mode = 'add', editedOfferData, professions, locations, agreements }) {
   const defaultValues = (() => {
@@ -25,6 +29,13 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
       specialization_id: String(editedOfferData.specialization_id),
     };
   })();
+  const initEditorState =
+    mode === 'edit' && editedOfferData
+      ? EditorState.createWithContent(
+          ContentState.createFromBlockArray(convertFromHTML(editedOfferData.description))
+        )
+      : EditorState.createEmpty();
+  const [editorState, onEditorStateChange] = useState(initEditorState);
 
   const { t } = useTranslation('offers');
   const { control, handleSubmit } = useForm({ defaultValues });
@@ -45,6 +56,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
       ...data,
       company_location_ids: data.locations.map((el) => el.id),
       agreement_type_ids: data.agreement_types.map((el) => el.id),
+      description: stateToHTML(editorState.getCurrentContent()),
     };
 
     try {
@@ -82,21 +94,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
             />
           </Box>
           <Box my={2}>
-            <Controller
-              name="description"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  label={t('description')}
-                  fullWidth
-                  multiline
-                  rows={12}
-                  variant="outlined"
-                />
-              )}
-            />
+            <Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
           </Box>
           <Box mx={1}>
             <Grid container spacing={6}>

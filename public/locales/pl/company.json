@@ -1,7 +1,7 @@
 {
   "noCompanyInfo": "Nie przypisano żadnej firmy do tego konta. Aby korzystać z pełni funkcjonalności systemu podaj dane konta.",
   "companyName": "Nazwa firmy",
-    "websiteUrl": "Adres strony firmy",
+  "websiteUrl": "Adres strony firmy",
   "logo": "Logo firmy",
   "presentation": "Prezentacja firmy",
   "editCompanyData": "Edytuj dane firmy",
@@ -13,6 +13,6 @@
   "locationName": "Nazwa lokalizacji",
   "address": "Adres",
   "addLocation": "Dodaj nową lokalizację",
-  "add":"Dodaj",
+  "save": "Zapisz",
   "locations": "Lokalizacje"
 }
