@@ -6,7 +6,7 @@ function NoCompany() {
   const { t } = useTranslation('company');
 
   return (
-    <Box>
+    <Box m={8}>
       <Alert severity="warning">{t('noCompanyInfo')}</Alert>
       <Box py={2}>
         <CompanyForm mode="add" />

@@ -1,22 +1,48 @@
 import '../styles/globals.css';
 
 import { appWithTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-
+import router from 'next/router';
+import App from 'next/app';
 import MainLayout from '../components/layout/MainLayout/MainLayout';
+import api from '../api';
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-  if (router.pathname === '/auth') {
+function MyApp({ Component, pageProps, company, hideNavigation }) {
+  if (hideNavigation) {
     return <Component {...pageProps} />;
   }
-
   return (
     <MainLayout>
-      <Component {...pageProps} />
+      <Component {...pageProps} company={company} />
     </MainLayout>
   );
 }
+
+MyApp.getInitialProps = async (appCtx) => {
+  const appProps = await App.getInitialProps(appCtx);
+  const { ctx } = appCtx;
+  try {
+    if (ctx.pathname !== '/auth' && ctx.pathname !== '/no-company') {
+      const company = await api.company.getCompanyData(ctx);
+      if (!company) {
+        redirect('/no-company', ctx);
+      } else {
+        return { ...appProps, company };
+      }
+    } else {
+      return { ...appProps, hideNavigation: true };
+    }
+  } catch (err) {
+    redirect('/auth', ctx);
+  }
+};
+
+const redirect = (location, ctx) => {
+  if (ctx?.req) {
+    ctx.res.writeHead(302, { Location: location });
+    ctx.res.end();
+  } else {
+    router.push(location);
+  }
+};
 
 export default appWithTranslation(MyApp);
