@@ -1,8 +1,9 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 import api from '../../api';
+const OfferForm = dynamic(import('../../components/offers/OfferForm'), { ssr: false });
+
 function EditOfferPage({ company, professions, agreements, offer }) {
-  const OfferForm = dynamic(import('../../components/offers/OfferForm'), { ssr: false });
   return (
     <OfferForm
       mode="edit"

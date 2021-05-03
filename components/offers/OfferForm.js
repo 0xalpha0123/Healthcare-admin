@@ -15,11 +15,14 @@ import {
 import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
-import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, ContentState, convertFromHTML } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import ValidationAlert from '../ui/ValidationAlert';
+import dynamic from 'next/dynamic';
+const Editor = dynamic(() => import('react-draft-wysiwyg').then((mod) => mod.Editor), {
+  ssr: false,
+});
 
 function OfferForm({ mode = 'add', editedOfferData, professions, locations, agreements }) {
   const defaultValues = (() => {

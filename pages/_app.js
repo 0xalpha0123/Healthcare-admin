@@ -25,6 +25,7 @@ MyApp.getInitialProps = async (appCtx) => {
       const company = await api.company.getCompanyData(ctx);
       if (!company) {
         redirect('/no-company', ctx);
+        return;
       } else {
         return { ...appProps, company };
       }
@@ -33,6 +34,7 @@ MyApp.getInitialProps = async (appCtx) => {
     }
   } catch (err) {
     redirect('/auth', ctx);
+    return;
   }
 };
 

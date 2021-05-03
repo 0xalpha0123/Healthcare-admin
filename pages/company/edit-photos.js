@@ -4,7 +4,7 @@ function CompanyEditPhotosPage({ company }) {
   return <CompanyPhotos mode="edit" photos={company.photos} />;
 }
 
-export const getStaticProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['company', 'navigation'])),
   },

@@ -5,7 +5,7 @@ function CompanyEditLocationsPage({ company }) {
   return <CompanyLocations mode="edit" locations={company.locations} />;
 }
 
-export const getStaticProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['company', 'navigation'])),
   },
