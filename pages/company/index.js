@@ -4,7 +4,7 @@ function CompanyPage({ company }) {
   return <Details company={company} />;
 }
 
-export const getStaticProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['company', 'navigation'])),
   },

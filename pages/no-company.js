@@ -4,7 +4,7 @@ function NoCompanyPage() {
   return <NoCompany />;
 }
 
-export const getStaticProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['company'])),
   },
