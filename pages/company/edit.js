@@ -1,6 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import CompanyForm from '../../components/company/CompanyForm';
+import dynamic from 'next/dynamic';
 function CompanyEditPage({ company }) {
+  const CompanyForm = dynamic(import('../../components/company/CompanyForm'), { ssr: false });
   return <CompanyForm mode="edit" editedCompanyData={company} />;
 }
 

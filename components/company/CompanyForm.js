@@ -6,22 +6,36 @@ import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
 
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, ContentState, convertFromHTML } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 function CompanyForm({ mode, editedCompanyData }) {
   const { t } = useTranslation('company');
   const defaultValues = mode === 'edit' && editedCompanyData ? editedCompanyData : {};
   const { control, handleSubmit } = useForm({ defaultValues });
+  const initEditorState =
+    mode === 'edit' && editedCompanyData
+      ? EditorState.createWithContent(
+          ContentState.createFromBlockArray(convertFromHTML(editedCompanyData.description))
+        )
+      : EditorState.createEmpty();
+
+  const [editorState, onEditorStateChange] = useState(initEditorState);
   const [serverError, setServerError] = useState('');
   const [file, setFile] = useState(null);
 
   const onSubmit = async (data) => {
+    const convertedData = { ...data, description: stateToHTML(editorState.getCurrentContent()) };
     try {
       const logo_file_path = file
         ? await api.company.uploadLogo(file)
         : editedCompanyData?.logo_file_path;
       if (mode === 'add') {
-        await api.company.postCompany({ ...data, logo_file_path });
+        await api.company.postCompany({ ...convertedData, logo_file_path });
       } else {
-        await api.company.editCompany({ ...data, logo_file_path });
+        await api.company.editCompany({ ...convertedData, logo_file_path });
       }
       router.push('/company');
     } catch (err) {
@@ -49,21 +63,7 @@ function CompanyForm({ mode, editedCompanyData }) {
             />
           </Box>
           <Box my={2}>
-            <Controller
-              name="description"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  label={t('presentation')}
-                  fullWidth
-                  multiline
-                  rows={12}
-                  variant="outlined"
-                />
-              )}
-            />
+            <Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
           </Box>
           <Box my={2}>
             <Controller
@@ -79,12 +79,10 @@ function CompanyForm({ mode, editedCompanyData }) {
               <input type="file" hidden onChange={handleFile} />
             </Button>
           </Box>
-
           {serverError && <Alert severity="error">{serverError}</Alert>}
-
           <Box textAlign="center" mt={4}>
             <Button variant="contained" type="submit" color="primary">
-              {t('add')}
+              {t('save')}
             </Button>
           </Box>
         </form>
