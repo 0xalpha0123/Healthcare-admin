@@ -15,11 +15,16 @@ import {
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { useCallback, useState } from 'react';
+import ValidationAlert from '../ui/ValidationAlert';
 
 function SignInOrUp() {
   const { t } = useTranslation('auth');
 
-  const { control, handleSubmit } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [serverError, setServerError] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isSignIn, setIsSignIn] = useState(true);
@@ -68,19 +73,23 @@ function SignInOrUp() {
                 <Controller
                   name="email"
                   control={control}
+                  rules={{ required: true }}
                   defaultValue=""
                   render={({ field }) => <TextField {...field} label={t('email')} fullWidth />}
                 />
+                <ValidationAlert error={errors.email} />
               </Box>
               <Box my={2}>
                 <Controller
                   name="password"
                   control={control}
+                  rules={{ required: true }}
                   defaultValue=""
                   render={({ field }) => (
                     <TextField {...field} label={t('password')} fullWidth type="password" />
                   )}
                 />
+                <ValidationAlert error={errors.password} />
               </Box>
 
               {serverError && <Alert severity="error">{serverError}</Alert>}

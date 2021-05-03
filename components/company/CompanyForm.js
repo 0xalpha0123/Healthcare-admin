@@ -10,11 +10,16 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, ContentState, convertFromHTML } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import ValidationAlert from '../ui/ValidationAlert';
 
 function CompanyForm({ mode, editedCompanyData }) {
   const { t } = useTranslation('company');
   const defaultValues = mode === 'edit' && editedCompanyData ? editedCompanyData : {};
-  const { control, handleSubmit } = useForm({ defaultValues });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues });
   const initEditorState =
     mode === 'edit' && editedCompanyData
       ? EditorState.createWithContent(
@@ -57,10 +62,12 @@ function CompanyForm({ mode, editedCompanyData }) {
           <Box my={2}>
             <Controller
               name="name"
+              rules={{ required: true }}
               control={control}
               defaultValue=""
               render={({ field }) => <TextField {...field} label={t('companyName')} fullWidth />}
             />
+            <ValidationAlert error={errors.name} />
           </Box>
           <Box my={2}>
             <Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
