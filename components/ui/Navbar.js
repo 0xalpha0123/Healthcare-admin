@@ -31,9 +31,6 @@ const Navbar = () => {
       </Box>
       <Box display="flex">
         <Box m={1}>
-          <Button variant="contained">{t('myAccount')}</Button>
-        </Box>
-        <Box m={1}>
           <Button variant="contained" onClick={handleLogoutClick}>
             {t('logout')}
           </Button>

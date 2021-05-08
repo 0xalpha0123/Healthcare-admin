@@ -1,38 +1,24 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import dynamic from 'next/dynamic';
 import api from '../../api';
-import NoCompany from '../../components/company/NoCompany';
-import OfferForm from '../../components/offers/OfferForm';
+const OfferForm = dynamic(import('../../components/offers/OfferForm'), { ssr: false });
+
 function AddOfferPage({ company, professions, agreements }) {
-  if (!company) {
-    return <NoCompany />;
-  }
   return (
     <OfferForm professions={professions} locations={company.locations} agreements={agreements} />
   );
 }
 
 export const getServerSideProps = async (ctx) => {
-  try {
-    await api.auth.getIsAuth(ctx);
-    const company = await api.company.getCompanyData(ctx);
-    const professions = await api.offers.getProfessions(ctx);
-    const agreements = await api.offers.getAgreements(ctx);
-    return {
-      props: {
-        ...(await serverSideTranslations(ctx.locale, ['company', 'offers', 'navigation'])),
-        company,
-        professions,
-        agreements,
-      },
-    };
-  } catch (err) {
-    return {
-      redirect: {
-        destination: '/auth',
-        permanent: false,
-      },
-    };
-  }
+  const professions = await api.offers.getProfessions(ctx);
+  const agreements = await api.offers.getAgreements(ctx);
+  return {
+    props: {
+      ...(await serverSideTranslations(ctx.locale, ['offers', 'navigation'])),
+      professions,
+      agreements,
+    },
+  };
 };
 
 export default AddOfferPage;

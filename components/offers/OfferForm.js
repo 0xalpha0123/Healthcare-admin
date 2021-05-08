@@ -15,6 +15,14 @@ import {
 import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
+import { EditorState, ContentState, convertFromHTML } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import ValidationAlert from '../ui/ValidationAlert';
+import dynamic from 'next/dynamic';
+const Editor = dynamic(() => import('react-draft-wysiwyg').then((mod) => mod.Editor), {
+  ssr: false,
+});
 
 function OfferForm({ mode = 'add', editedOfferData, professions, locations, agreements }) {
   const defaultValues = (() => {
@@ -25,9 +33,20 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
       specialization_id: String(editedOfferData.specialization_id),
     };
   })();
+  const initEditorState =
+    mode === 'edit' && editedOfferData
+      ? EditorState.createWithContent(
+          ContentState.createFromBlockArray(convertFromHTML(editedOfferData.description))
+        )
+      : EditorState.createEmpty();
+  const [editorState, onEditorStateChange] = useState(initEditorState);
 
   const { t } = useTranslation('offers');
-  const { control, handleSubmit } = useForm({ defaultValues });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues });
   const [serverError, setServerError] = useState('');
   const [specializations, setSpecializations] = useState([]);
 
@@ -45,6 +64,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
       ...data,
       company_location_ids: data.locations.map((el) => el.id),
       agreement_type_ids: data.agreement_types.map((el) => el.id),
+      description: stateToHTML(editorState.getCurrentContent()),
     };
 
     try {
@@ -76,27 +96,15 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
           <Box my={2}>
             <Controller
               name="title"
+              rules={{ required: true }}
               control={control}
               defaultValue=""
               render={({ field }) => <TextField {...field} label={t('title')} fullWidth />}
             />
+            <ValidationAlert error={errors.title} />
           </Box>
           <Box my={2}>
-            <Controller
-              name="description"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  label={t('description')}
-                  fullWidth
-                  multiline
-                  rows={12}
-                  variant="outlined"
-                />
-              )}
-            />
+            <Editor editorState={editorState} onEditorStateChange={onEditorStateChange} />
           </Box>
           <Box mx={1}>
             <Grid container spacing={6}>
@@ -127,6 +135,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
               <Grid item xs={6}>
                 <Controller
                   name="profession_id"
+                  rules={{ required: true }}
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
@@ -145,6 +154,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
                     </TextField>
                   )}
                 />
+                <ValidationAlert error={errors.profession_id} />
               </Grid>
               <Grid item xs={6}>
                 <Controller
@@ -171,6 +181,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
                   name="locations"
                   control={control}
                   defaultValue={[]}
+                  rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
                       select
@@ -191,12 +202,14 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
                     </TextField>
                   )}
                 />
+                <ValidationAlert error={errors.locations} />
               </Grid>
               <Grid item xs={6}>
                 <Controller
                   name="agreement_types"
                   control={control}
                   defaultValue={[]}
+                  rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
                       select
@@ -217,6 +230,7 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
                     </TextField>
                   )}
                 />
+                <ValidationAlert error={errors.agreement_types} />
               </Grid>
             </Grid>
             <Box py={2}>

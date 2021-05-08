@@ -5,9 +5,14 @@ import { TextField, Card, Box, Button, CardContent, MenuItem } from '@material-u
 import { Alert } from '@material-ui/lab';
 import api from '../../api';
 import router from 'next/router';
+import ValidationAlert from '../ui/ValidationAlert';
 function PaymentForm({ offerId, banks }) {
   const { t } = useTranslation('payments');
-  const { control, handleSubmit } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [serverError, setServerError] = useState('');
 
   const onSubmit = async (data) => {
@@ -53,6 +58,7 @@ function PaymentForm({ offerId, banks }) {
             <Controller
               name="option"
               control={control}
+              rules={{ required: true }}
               defaultValue=""
               render={({ field }) => (
                 <TextField {...field} select label={t('chooseOption')} fullWidth>
@@ -64,10 +70,12 @@ function PaymentForm({ offerId, banks }) {
                 </TextField>
               )}
             />
+            <ValidationAlert error={errors.option} />
             <Box py={4}>
               <Controller
                 name="bankId"
                 control={control}
+                rules={{ required: true }}
                 defaultValue=""
                 render={({ field }) => (
                   <TextField {...field} select label={t('chooseBank')} fullWidth>
@@ -81,6 +89,7 @@ function PaymentForm({ offerId, banks }) {
                   </TextField>
                 )}
               />
+              <ValidationAlert error={errors.bankId} />
             </Box>
 
             {serverError && <Alert severity="error">{serverError}</Alert>}

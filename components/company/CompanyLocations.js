@@ -7,9 +7,9 @@ import CompanyLocationForm from './CompanyLocationForm';
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import api from '../../api';
+const Map = dynamic(() => import('../ui/Map'), { ssr: false });
 
 function CompanyLocations({ locations: initLocations, mode }) {
-  const Map = dynamic(() => import('../ui/Map'), { ssr: false });
   const { t } = useTranslation('company');
   const [locations, setLocations] = useState([...initLocations]);
   const [serverError, setServerError] = useState('');
