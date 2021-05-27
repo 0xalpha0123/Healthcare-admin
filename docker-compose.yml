@@ -20,7 +20,6 @@ services:
     restart: always
     command: npm run start
     volumes:
-      - ./:/usr/src/app
       - /usr/src/app/node_modules
       - /usr/src/app/.next
     ports:
