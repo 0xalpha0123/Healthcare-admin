@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    command: sh -c "npm run build && npm run start"
+    command: npm run start
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
