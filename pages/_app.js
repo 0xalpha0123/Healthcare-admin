@@ -21,7 +21,7 @@ MyApp.getInitialProps = async (appCtx) => {
   const appProps = await App.getInitialProps(appCtx);
   const { ctx } = appCtx;
   try {
-    if (ctx.pathname !== '/auth' && ctx.pathname !== '/no-company') {
+    if (!ctx.pathname.includes('/auth') && ctx.pathname !== '/no-company') {
       const company = await api.company.getCompanyData(ctx);
       if (!company) {
         redirect('/no-company', ctx);
