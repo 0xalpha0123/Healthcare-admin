@@ -11,7 +11,7 @@ function VerificationMessage({ isSuccess }) {
       <Box m={4}>
         <Card>
           <Box height={300}>
-            <img src="/logo.svg" />
+            <img src="/assets/logo.svg" />
           </Box>
           <Box pb={4} px={2} textAlign="center">
             {isSuccess ? (
