@@ -239,7 +239,10 @@ function OfferForm({ mode = 'add', editedOfferData, professions, locations, agre
                 control={control}
                 defaultValue={false}
                 render={({ field }) => (
-                  <FormControlLabel control={<Checkbox {...field} />} label={t('active')} />
+                  <FormControlLabel
+                    control={<Checkbox checked={field.value} onChange={field.onChange} />}
+                    label={t('active')}
+                  />
                 )}
               />
             </Box>
