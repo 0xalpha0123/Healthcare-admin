@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/app/admin-front
+hooks:
+  ApplicationStart:
+    - location: scripts/start_container.sh
+      timeout: 600
+      runas: ec2-user

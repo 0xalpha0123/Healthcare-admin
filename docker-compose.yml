@@ -1,14 +1,27 @@
-version: '3'
+version: "3"
 
 services:
   dev:
+    container_name: admin_front_dev
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: dev
     restart: always
+    command: npm run start:dev
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "3000:3000"
+  prod:
+    container_name: admin_front_prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    command: sh -c "npm run build && npm run start"
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
+      - /usr/src/app/.next
     ports:
-      - '3000:3000'
+      - "4000:3000"
