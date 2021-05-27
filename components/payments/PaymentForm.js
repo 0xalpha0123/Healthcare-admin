@@ -18,9 +18,10 @@ function PaymentForm({ offerId, banks }) {
   const onSubmit = async (data) => {
     try {
       const requestData = {
-        ...data.option,
-        offerId,
-        bankId: data.bankId,
+        extension_days: data.option.extensionDays,
+        amount: data.option.amount,
+        offer_id: offerId,
+        bank_id: data.bankId,
       };
       const paymentLink = await api.payments.postTransaction(requestData);
       window.location.href = paymentLink;
