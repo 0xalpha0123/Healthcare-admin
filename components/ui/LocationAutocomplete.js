@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 import axios from 'axios';
-const API_KEY = 'AIzaSyDGaUiEyqMK9R9UoM9DQGIrdx_IgClLlaE';
+const API_KEY = NEXT_PUBLIC_GOOGLE_API_KEY;
 
 function loadScript(src, position, id) {
   if (!position) {
